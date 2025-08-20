@@ -6,7 +6,7 @@ export default function Balance(){
     const [amount, setAmount] = useState(0);
 
     useEffect(() =>{
-        axios.get("http://localhost:3000/api/v1/account/balance",{headers:{
+        axios.get("/api/v1/account/balance",{headers:{
             authorization: `Bearer ${localStorage.getItem('token')}`
         }})
         .then(response => {

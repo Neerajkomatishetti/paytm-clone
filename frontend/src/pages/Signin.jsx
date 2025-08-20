@@ -28,7 +28,7 @@ export default function Signin() {
       <div className="pt-4">
         <Button label={"Sign In"} onClick={async () =>{
           try{
-            await axios.post("http://localhost:3000/api/v1/user/signin", {
+            await axios.post("/api/v1/user/signin", {
               username:username,
               password:password
             });

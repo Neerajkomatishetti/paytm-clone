@@ -27,7 +27,7 @@ export default function SendMoney() {
           setAmount(e.target.value);
         }} placeholder="Enter amount" className="w-full p-2 rounded-md border border-gray-300 mb-2" />
         <button onClick={async ()=>{
-          await axios.post("http://localhost:3000/api/v1/account/transfer",{
+          await axios.post("/api/v1/account/transfer",{
             to:id,
             amount
           },{
