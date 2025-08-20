@@ -32,6 +32,8 @@ export default function Signin() {
               username:username,
               password:password
             });
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('username', username);
             navigate('/dashboard');
         }catch(err) {
           console.log("user may doesnot exist! please sign up!");
