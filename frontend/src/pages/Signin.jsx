@@ -19,7 +19,7 @@ export default function Signin() {
     <div className="rounded-lg bg-[#fefdfd] w-[80vw] max-w-80 text-center p-2 h-max px-4 sm:w-80">
       <Heading label={"Sign In"} />
       <SubHeading label={"Enter your information to Signin"} />
-      <InputBox placeholder="harkirat@gmail.com" label={"Email"} onChange={(e) =>{
+      <InputBox placeholder="example@gmail.com" label={"Email"} onChange={(e) =>{
         setUserName(e.target.value);
       }}/>
       <InputBox placeholder="123456" label={"Password"} onChange={(e) =>{
@@ -28,7 +28,7 @@ export default function Signin() {
       <div className="pt-4">
         <Button label={"Sign In"} onClick={async () =>{
           try{
-            await axios.post("/api/v1/user/signin", {
+            const response = await axios.post("/api/v1/user/signin", {
               username:username,
               password:password
             });
@@ -37,7 +37,7 @@ export default function Signin() {
             navigate('/dashboard');
         }catch(err) {
           console.log("user may doesnot exist! please sign up!");
-          navigate('/signup');
+          navigate('/');
         }
         }}/>
       </div>
