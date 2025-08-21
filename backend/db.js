@@ -49,8 +49,33 @@ const accountSchema = mongoose.Schema({
 
 const Account = mongoose.model('Account', accountSchema);
 
+const transactionSchema = mongoose.Schema({
+    userID:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    username:{
+        type:String,
+        ref:'User',
+        required:true,
+        trim:true
+    },
+    Amount:{
+        type:Number,
+        required:true
+    },
+    paymentmode:{
+        type:String,
+        required:true,
+        trim:true
+    }
+})
+
+const Transactions = mongoose.model('transactions', transactionSchema);
 
 module.exports = {
     User,
-    Account
+    Account,
+    Transactions
 }

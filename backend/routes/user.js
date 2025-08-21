@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const { Account } = require('../db');
 require('dotenv').config();
 const JWT_SECRET = process.env.JWT_SECRET
+const { Transactions } = require('../db');
 
 const signupBody = zod.object({
     username:zod.string().email(),
@@ -55,7 +56,9 @@ router.post('/signup', async (req, res) => {
         balance:10000
     });
 
-    const token = jwt.sign({ userID }, JWT_SECRET);
+    const token = jwt.sign({ 
+        userID
+     }, JWT_SECRET);
 
     res.status(200).json({
         message:"signup successful",
@@ -88,7 +91,9 @@ router.post('/signin', async (req, res) => {
 
         if(isMatched){
                 const userID = user._id;
-                const jwt_token = jwt.sign({ userID }, JWT_SECRET)
+                const jwt_token = jwt.sign({ 
+                    userID
+                 }, JWT_SECRET)
                 
                 return res.status(200).json({
                     message: "signin successful",
@@ -160,5 +165,6 @@ router.get('/bulk', async (req, res) => {
     })
 
 })
+
 
 module.exports = router;

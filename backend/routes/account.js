@@ -4,6 +4,8 @@ const zod = require('zod');
 const { Account } = require('../db');
 const router = express.Router();
 const { authMiddleware } = require('../middleware');
+const { Transactions } = require('../db');
+const { User } = require('../db');
 
 // router.get('/balance', authMiddleware, async (req, res) =>{
 //     console.log(req.userID);
@@ -50,6 +52,7 @@ router.post('/transfer', authMiddleware, async (req, res) => {
         }
 
         const toAccount = await Account.findOne({userID:to}).session(session);
+        const toUserName = await User.findOne({userID:to}).session(session);
 
         if(!toAccount){
             await session.abortTransaction();
@@ -60,6 +63,21 @@ router.post('/transfer', authMiddleware, async (req, res) => {
 
         await Account.updateOne({userID:req.userID}, { $inc:{balance: -amount} }).session(session);
         await Account.updateOne({userID:to}, { $inc:{balance: amount} }).session(session);
+
+
+        await Transactions.create({
+            username:req.username,
+            userID:userID,
+            Amount:amount,
+            paymentmode:"Sent"
+        }).session(session);
+        await Transactions.create({
+            username:toUserName.firstname,
+            userID:to,
+            Amount:amount,
+            paymentmode:"Received"
+        }).session(session);
+
 
         await session.commitTransaction();
     }catch(e){
@@ -73,6 +91,25 @@ router.post('/transfer', authMiddleware, async (req, res) => {
     res.status(200).json({
         message:"Transaction successful"
     });
+})
+
+
+router.get('/history', authMiddleware, async (req, res) =>{
+    const userID = req.userID;
+    const transactions = await Transactions.find({
+        userID:userID
+    });
+
+    res.status(200).json({
+        transactions:transactions.map(transaction =>({
+            username:transaction.username,
+            Amount:transaction.Amount,
+            paymentmode:transaction.paymentmode
+
+        })),
+        message:"Success"
+    })
+
 })
 
 
