@@ -24,18 +24,23 @@ export default function SendMoney() {
             <h1 className="text-2xl font-bold">{name}</h1>
         </div>
         <input type="number" onChange={(e) =>{
-          setAmount(e.target.value);
+          setAmount(Number(e.target.value));
         }} placeholder="Enter amount" className="w-full p-2 rounded-md border border-gray-300 mb-2" />
         <button onClick={async ()=>{
-          await axios.post("http://localhost:3000/api/v1/account/transfer",{
-            to:id,
-            amount
-          },{
-            headers:{
-              Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-          navigate("/dashboard");
+          try{
+              await axios.post("/api/v1/account/transfer",{
+                to:id,
+                amount
+              },{
+                headers:{
+                  authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+              })
+              navigate("/dashboard");
+        }catch (err) {
+          alert(err?.response?.data?.message || "Transfer failed");
+        }
+        
         }} className="bg-green-500 text-white px-4 py-2 rounded-md w-full">Send Money</button>
       </div>
       

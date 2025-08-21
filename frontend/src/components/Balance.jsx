@@ -9,7 +9,7 @@ export default function Balance(){
     const navigate = useNavigate();
 
     useEffect(() =>{
-        axios.get("http://localhost:3000/api/v1/account/balance",{headers:{
+        axios.get("/api/v1/account/balance",{headers:{
             authorization: `Bearer ${localStorage.getItem('token')}`
         }})
         .then(response => {

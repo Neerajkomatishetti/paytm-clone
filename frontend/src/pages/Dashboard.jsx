@@ -4,7 +4,7 @@ import { Users } from "../components/Users";
 
 export default function Dashboard() {
     return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center overflow-auto no-scrollbar">
       <Appbar/>
       <Balance amount={10000}/>
       <Users/>

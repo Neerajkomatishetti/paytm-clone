@@ -26,7 +26,7 @@ export const Users = () => {
 
     useEffect(() => {
         const timeout = setTimeout(async () =>{
-            const response = await axios.get(`http://localhost:3000/api/v1/user/bulk?filter=${filter}`);
+            const response = await axios.get(`/api/v1/user/bulk?filter=${filter}`);
 
             setUsers(response.data.users)
 
@@ -38,7 +38,7 @@ export const Users = () => {
 
     const username = localStorage.getItem('username');
 
-    const displayedUsers = users.slice(0, 6).filter(user => user.username != username);
+    const displayedUsers = users.slice(0, 10).filter(user => user.username != username);
 
     return <>
     <div className="flex flex-col flex-start w-[97%] [&>*]:ml-5">
@@ -50,7 +50,7 @@ export const Users = () => {
                 setFilter(e.target.value)
             }} type="text" placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200"></input>
         </div>
-        <div>
+        <div className="block overflow-auto ">
             {displayedUsers.map(user => <User key={user._id} user={user} />)}
         </div>
     </div>
