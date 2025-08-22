@@ -6,25 +6,25 @@
 
 ### Screenshots
 - Signin:
-![Signin](https://via.placeholder.com/1200x700?text=Signin+Screenshot)
+![Signin](./Screenshots/Singup.png)
 
 - Signup:
-![Signup](https://via.placeholder.com/1200x700?text=Signup+Screenshot)
+![Signup](./Screenshots/Signin.png)
 
 - Dashboard:
-![Dashboard](https://via.placeholder.com/1200x700?text=Dashboard+Screenshot)
+![Dashboard](./Screenshots/dashboard.png)
 
 - Send Money:
-![Send+Money](https://via.placeholder.com/1200x700?text=Send+Money+Screenshot)
+![Send+Money](./Screenshots/dashboard.png)
 
 - History:
-![History](https://via.placeholder.com/1200x700?text=History+Screenshot)
+![History](./Screenshots/history.png)
 
 ## Installation (Clone & Run)
 
 ### 1) Clone the repository
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/Neerajkomatishetti/paytm-clone.git
 cd your-repo/PayTM/paytm
 ```
 
