@@ -17,7 +17,7 @@
 ![Dashboard](./Screenshots/dashboard.png)
 
 - Send Money:
-![Send+Money](./Screenshots/dashboard.png)
+![Send+Money](./Screenshots/SendMoney.png)
 
 - History:
 ![History](./Screenshots/history.png)
