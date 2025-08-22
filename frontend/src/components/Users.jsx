@@ -17,6 +17,7 @@ import { useEffect, useState } from "react"
 import { Button } from "./Button"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const Dev_Path = import.meta.env.VITE_Local_Prefix
 
 
 export const Users = () => {
@@ -26,7 +27,7 @@ export const Users = () => {
 
     useEffect(() => {
         const timeout = setTimeout(async () =>{
-            const response = await axios.get(`/api/v1/user/bulk?filter=${filter}`);
+            const response = await axios.get(`${Dev_Path}/api/v1/user/bulk?filter=${filter}`);
 
             setUsers(response.data.users)
 

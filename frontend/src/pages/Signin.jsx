@@ -6,6 +6,7 @@ import { InputBox } from "../components/InputBox"
 import { SubHeading } from "../components/SubHeading"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+const Dev_Path = import.meta.env.VITE_Local_Prefix
 
 
 
@@ -28,7 +29,7 @@ export default function Signin() {
       <div className="pt-4">
         <Button label={"Sign In"} onClick={async () =>{
           try{
-            const response = await axios.post("/api/v1/user/signin", {
+            const response = await axios.post(Dev_Path + "/api/v1/user/signin", {
               username:username,
               password:password
             });

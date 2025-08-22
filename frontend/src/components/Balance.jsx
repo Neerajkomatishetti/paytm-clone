@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
+const Dev_Path = import.meta.env.VITE_Local_Prefix
 
 
 
@@ -9,7 +10,7 @@ export default function Balance(){
     const navigate = useNavigate();
 
     useEffect(() =>{
-        axios.get("/api/v1/account/balance",{headers:{
+        axios.get(Dev_Path + "/api/v1/account/balance",{headers:{
             authorization: `Bearer ${localStorage.getItem('token')}`
         }})
         .then(response => {

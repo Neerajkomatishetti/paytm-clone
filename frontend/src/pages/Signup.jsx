@@ -6,7 +6,7 @@ import { SubHeading } from "../components/SubHeading"
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-
+const Dev_Path = import.meta.env.VITE_Local_Prefix
 
 export default function Signup() {
     const [username, setUserName] = useState("");
@@ -34,7 +34,7 @@ export default function Signup() {
         }}/>
         <div className="pt-4">
           <Button label={"Sign up"} onClick={async () =>{
-            const response = await axios.post("/api/v1/user/signup",{
+            const response = await axios.post(Dev_Path + "/api/v1/user/signup",{
               username,
               password,
               firstname,
