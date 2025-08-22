@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-const Dev_Path = import.meta.env.VITE_Local_Prefix
+const Dev_Path = import.meta.env.VITE_Local_Prefix || "";
 
 
 

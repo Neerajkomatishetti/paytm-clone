@@ -3,7 +3,7 @@ import { Heading } from "../components/Heading"
 import { SubHeading } from "../components/SubHeading"
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-const Dev_Path = import.meta.env.VITE_Local_Prefix
+const Dev_Path = import.meta.env.VITE_Local_Prefix || "";
 
 
 
